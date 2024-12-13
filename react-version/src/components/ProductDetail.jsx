@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import CartModal from "./CartModal";
-
+import vector from "../assets/Vector.svg";
+import starHalf from "../assets/star-half-fill.svg";
+import starEmpty from "../assets/star.svg";
+import plus from "../assets/3 M.svg";
+import minus from "../assets/7 D.svg";
 const ProductDetail = ({ productData }) => {
   const [cart, setCart] = useState([]);
   const [amount, setAmount] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [showCheackout, setShowCheckout] = useState(false);
-  const [selectedColor, setSelectedColor] = useState(
-    productData.colors[0].value
-  );
+  const [selectedColor, setSelectedColor] = useState(0);
 
   const handleColorChange = (color) => {
     setSelectedColor(color);
@@ -35,7 +37,7 @@ const ProductDetail = ({ productData }) => {
       quantity: amount,
       price,
       total: amount * price,
-      image: `public/${selectedColor}-watch.png`,
+      image: productData.colors[selectedColor].image,
     };
 
     setCart((prevCart) => {
@@ -66,11 +68,11 @@ const ProductDetail = ({ productData }) => {
     return (
       <>
         {[...Array(fullStars)].map((_, i) => (
-          <img key={`full-${i}`} src="public/Vector.svg" alt="Full Star" />
+          <img key={`full-${i}`} src={vector} alt="Full Star" />
         ))}
-        {hasHalfStar && <img src="public/star-half-fill.svg" alt="Half Star" />}
+        {hasHalfStar && <img src={starHalf} alt="Half Star" />}
         {[...Array(emptyStars)].map((_, i) => (
-          <img key={`empty-${i}`} src="public/star.svg" alt="Empty Star" />
+          <img key={`empty-${i}`} src={starEmpty} alt="Empty Star" />
         ))}
       </>
     );
@@ -81,7 +83,7 @@ const ProductDetail = ({ productData }) => {
       <div>
         <img
           id="product-image"
-          src={`public/${selectedColor}-watch.png`}
+          src={productData.colors[selectedColor].image}
           alt={productData.name}
           className="image"
         />
@@ -126,9 +128,9 @@ const ProductDetail = ({ productData }) => {
                 <input
                   type="radio"
                   name="color"
-                  value={color.value}
-                  checked={selectedColor === color.value}
-                  onChange={() => handleColorChange(color.value)}
+                  value={selectedColor}
+                  checked={selectedColor === index}
+                  onChange={() => handleColorChange(index)}
                 />
                 <span
                   style={{ backgroundColor: `var(--color-${color.value})` }}
@@ -164,7 +166,7 @@ const ProductDetail = ({ productData }) => {
               className="minus"
               onClick={() => handleQuantityChange("decrement")}
             >
-              <img src="public/7 D.svg" alt="minus" />
+              <img src={minus} alt="minus" />
             </button>
             <input
               type="number"
@@ -177,7 +179,7 @@ const ProductDetail = ({ productData }) => {
               className="plus"
               onClick={() => handleQuantityChange("increment")}
             >
-              <img src="public/3 M.svg" alt="plus" />
+              <img src={plus} alt="plus" />
             </button>
           </div>
           <button className="add-to-cart" onClick={addToCart}>
@@ -198,14 +200,13 @@ const ProductDetail = ({ productData }) => {
           </button>
         </div>
       )}
-      {/* Modal Component */}
+
       {showModal && (
         <CartModal
           isOpen={showModal}
           onClose={() => setShowModal(false)}
           cartItems={cart}
           onCheckout={() => {
-            // Handle checkout logic here
             console.log("Proceeding to checkout");
           }}
         />

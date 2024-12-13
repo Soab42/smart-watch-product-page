@@ -4,8 +4,8 @@ A responsive, feature-rich product page for a smart watch, developed in both van
 
 ## 🌐 Live Demos
 
-- **HTML Version**: [View Live Demo](https://your-demo-link.com)
-- **React Version**: [View React Demo](https://your-react-demo-link.com)
+- **HTML Version**: [View Live Demo](https://softino-smart-watch-product-page.netlify.app/)
+- **React Version**: [View React Demo](https://softino-smart-watch-product-react.netlify.app/)
 
 ## ✨ Key Features
 
