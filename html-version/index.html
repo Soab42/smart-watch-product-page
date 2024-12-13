@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- <link rel="stylesheet" href="styles.css" /> -->
+    <link rel="stylesheet" href="styles.css" />
+    <title>Softnio</title>
+  </head>
+  <body>
+    <div id="root">
+      <div class="main" id="main"></div>
+      <div class="checkout">
+        <button class="checkout-button hidden">Checkout <span>0</span></button>
+      </div>
+      <div class="modal hidden">
+        <div class="modal-content">
+          <h1>Your Cart</h1>
+          <table class="product-table">
+            <thead>
+              <tr class="table-header">
+                <th>Item</th>
+                <th>Color</th>
+                <th>Size</th>
+                <th>Qnt</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+            <tr class="table-footer">
+              <td colspan="3">Total</td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+          <div class="modal-buttons">
+            <button class="continue-button">Continue Shopping</button>
+            <button class="checkout-button2">Checkout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
