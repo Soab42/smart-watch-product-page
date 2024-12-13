@@ -89,9 +89,10 @@ smart-watch-product-page/
 |   └── public/
 │
 ├── react-version/
-│   ├── src/
-│   │   └── components/
-│   └── public/
+│   └── src/
+│       ├── components/
+│       └── assets/
+│   
 │
 └── README.md
 ```
