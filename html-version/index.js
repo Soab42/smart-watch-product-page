@@ -120,10 +120,12 @@ addToCartButton.addEventListener("click", () => {
 
 checkoutButton.addEventListener("click", () => {
   modal.classList.remove("hidden");
+  checkoutButton.classList.add("hidden");
   updateModal();
 });
 continueButton.addEventListener("click", () => {
   modal.classList.add("hidden");
+  checkoutButton.classList.remove("hidden");
 });
 // Render Product Data
 function renderProduct(data) {

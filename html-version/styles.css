@@ -28,6 +28,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 2rem;
 }
 
 .main {
@@ -44,7 +45,11 @@ body {
   max-width: 630px;
   border-radius: 4px;
 }
-
+#product-image {
+  width: 100%;
+  object-fit: contain;
+  padding: 0.1rem;
+}
 .content {
   flex: 1;
   min-width: 300px;
@@ -400,18 +405,81 @@ input[type="number"] {
 
 @media (max-width: 768px) {
   #root {
-    padding: 60px 15px;
+    padding: 4rem 1rem;
+    height: auto;
   }
-
   .main {
-    gap: 30px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   }
-
-  .content {
-    padding: 0 15px;
+  #product-image {
+    width: 100%;
+    object-fit: contain;
+    padding: 0.1rem;
   }
-
   .buttons {
     justify-content: center;
+  }
+  .checkout {
+    bottom: 0rem;
+  }
+  .modal {
+    position: fixed;
+  }
+}
+@media screen and (max-width: 600px) {
+  #root {
+    padding: 1rem;
+    height: auto;
+  }
+  .main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  #product-image {
+    width: 100%;
+    object-fit: contain;
+    padding: 0.1rem;
+  }
+
+  .checkout {
+    bottom: 5.5rem;
+    right: -6rem;
+    rotate: -90deg;
+    transform: translateX(50%);
+  }
+
+  .modal {
+    position: fixed;
+  }
+  .modal-content {
+    padding: 1rem;
+    border-radius: 0rem;
+  }
+  .product-table {
+    font-size: 0.7rem;
+  }
+  .modal-buttons {
+    justify-content: center;
+  }
+  .table-row td:last-child {
+    text-align: right;
+    width: 1rem;
+  }
+  .product-div {
+    padding-right: 0rem;
+  }
+  .table-row td {
+    padding: 1rem 0rem;
+  }
+  .table-header th {
+    padding: 0.5rem 0.5rem;
+  }
+  .table-footer td {
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 1rem 0rem;
   }
 }

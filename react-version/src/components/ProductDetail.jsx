@@ -5,6 +5,7 @@ import starHalf from "../assets/star-half-fill.svg";
 import starEmpty from "../assets/star.svg";
 import plus from "../assets/3 M.svg";
 import minus from "../assets/7 D.svg";
+import heart from "../assets/Heart.svg";
 const ProductDetail = ({ productData }) => {
   const [cart, setCart] = useState([]);
   const [amount, setAmount] = useState(1);
@@ -32,7 +33,7 @@ const ProductDetail = ({ productData }) => {
 
     const product = {
       name: productData.name,
-      color: selectedColor,
+      color: productData.colors[selectedColor].name,
       size: selectedSize,
       quantity: amount,
       price,
@@ -186,7 +187,7 @@ const ProductDetail = ({ productData }) => {
             Add to Cart
           </button>
           <button className="wishlist">
-            <img src="public/heart.svg" alt="" />
+            <img src={heart} alt="" />
           </button>
         </div>
       </div>
@@ -194,7 +195,10 @@ const ProductDetail = ({ productData }) => {
         <div className="checkout">
           <button
             className="checkout-button"
-            onClick={() => setShowModal(true)}
+            onClick={() => {
+              setShowModal(true);
+              setShowCheckout(false);
+            }}
           >
             Checkout <span>{cart.length}</span>
           </button>
@@ -204,7 +208,10 @@ const ProductDetail = ({ productData }) => {
       {showModal && (
         <CartModal
           isOpen={showModal}
-          onClose={() => setShowModal(false)}
+          onClose={() => {
+            setShowModal(false);
+            setShowCheckout(true);
+          }}
           cartItems={cart}
           onCheckout={() => {
             console.log("Proceeding to checkout");
