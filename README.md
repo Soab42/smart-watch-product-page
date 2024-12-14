@@ -72,9 +72,9 @@ A responsive, feature-rich product page for a smart watch, developed in both van
 
 ### Color Palette
 
-- **Primary Color**: `#3858D6`
-- **Secondary Color**: `#F4F7FF`
-- **Text Color**: `#1A1F2C`
+- **Primary Color**: `#6576ff`
+- **Secondary Color**: `#ffbb5a`
+- **Text Color**: `#364a63, #8091a7`
 - **Background Color**: `#FFFFFF`
 
 ## 📂 Project Structure
@@ -92,7 +92,6 @@ smart-watch-product-page/
 │   └── src/
 │       ├── components/
 │       └── assets/
-│   
-│
+│ 
 └── README.md
 ```
