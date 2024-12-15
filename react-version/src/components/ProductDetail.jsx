@@ -12,7 +12,7 @@ const ProductDetail = ({ productData }) => {
   const [showModal, setShowModal] = useState(false);
   const [showCheackout, setShowCheckout] = useState(false);
   const [selectedColor, setSelectedColor] = useState(0);
-
+  const [selectedPrice, setSelectedPrice] = useState(productData.sizes[0]);
   const handleColorChange = (color) => {
     setSelectedColor(color);
   };
@@ -26,18 +26,13 @@ const ProductDetail = ({ productData }) => {
   };
 
   const addToCart = () => {
-    const selectedSize = document.querySelector(
-      ".sizes .size input:checked"
-    ).value;
-    const price = parseInt(productData.basePrice);
-
     const product = {
       name: productData.name,
       color: productData.colors[selectedColor].name,
-      size: selectedSize,
+      size: selectedPrice.name,
       quantity: amount,
-      price,
-      total: amount * price,
+      price: selectedPrice.discountedPrice,
+      total: amount * selectedPrice.discountedPrice,
       image: productData.colors[selectedColor].image,
     };
 
@@ -98,8 +93,8 @@ const ProductDetail = ({ productData }) => {
         </div>
 
         <div className="price">
-          <del>${productData.discountPrice.toFixed(2)}</del>
-          <h2>${productData.basePrice.toFixed(2)}</h2>
+          <del>${selectedPrice.basePrice.toFixed(2)}</del>
+          <h2>${selectedPrice.discountedPrice.toFixed(2)}</h2>
         </div>
 
         <div className="description">
@@ -151,10 +146,11 @@ const ProductDetail = ({ productData }) => {
                   name="size"
                   value={size.name.toLowerCase()}
                   defaultChecked={index === 0}
+                  onChange={() => setSelectedPrice(size)}
                 />
                 <div className="size-price">
                   <span>{size.name}</span>
-                  <span>${size.price}</span>
+                  <span>${size.discountedPrice}</span>
                 </div>
               </label>
             ))}
